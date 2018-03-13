@@ -1,13 +1,10 @@
 @import '../Css/index.scss';
 
-
-.Auth{
-  @extend .page-width;
-  @extend .page-margin-top;
-
+.Signup{
   h4{
-    text-align:center;
+    text-align: center;
   }
+  @extend .default-page;
   .waves-effect.waves-light.btn{
     width:100%;
   }

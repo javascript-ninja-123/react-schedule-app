@@ -4,4 +4,4 @@
   .Home video {
     height: 100%;
     width: 100vw;
-    object-fit: cover; }
+    object-fit: fill; }

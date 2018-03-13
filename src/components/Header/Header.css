@@ -1,4 +1,9 @@
 .Header {
-  width: 100vw; }
+  width: 100vw;
+  height: 64px; }
   .Header .nav-wrapper {
     padding: 0 10px; }
+  .Header a {
+    text-decoration: none; }
+    .Header a:hover {
+      color: lightgrey; }

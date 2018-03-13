@@ -6,6 +6,7 @@ import Home from './components/Home/Home'
 import Header from './components/Header/Header'
 import Auth from './components/Auth/Auth'
 import Calendar from './components/Calendar/Calendar';
+import Signup from './components/Signup/Signup';
 
  class Router extends React.Component {
 
@@ -14,6 +15,7 @@ import Calendar from './components/Calendar/Calendar';
       <div>
         <Header/>
         <Switch>
+          <Route path='/auth/signup' component={Signup}/>
           <Route path='/calendar' component={Calendar}/>
           <Route path='/auth' component={Auth}/>
           <Route path='/' component={Home}/>

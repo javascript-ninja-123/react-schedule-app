@@ -9,3 +9,5 @@ export const timeConverter = time => compose(
   converTime,
   convertToHumanReadableTime
 )(time);
+
+export const toTime = time => moment(time).toDate();

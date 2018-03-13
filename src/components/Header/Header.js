@@ -9,14 +9,14 @@ class Header extends Component {
   render() {
     return (<div className='Header'>
       <nav>
-        <div class="nav-wrapper">
-          <Link to='/' class="brand-logo">Sung's Schedule</Link>
-          <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <div className="nav-wrapper">
+          <Link to='/' className="brand-logo">Calendar</Link>
+          <ul id="nav-mobile" className="right hide-on-med-and-down">
             <li>
               <Link to='/calendar'>Calendar</Link>
             </li>
             <li>
-              <Link class="waves-effect waves-light btn" to='/auth'>Sign In</Link>
+              <Link className="waves-effect waves-light btn" to='/auth'>Sign In</Link>
             </li>
           </ul>
         </div>

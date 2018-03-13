@@ -1,6 +1,13 @@
 .Header{
   width:100vw;
+  height:64px;
   .nav-wrapper{
     padding:0 10px;
+  }
+  a{
+    text-decoration: none;
+    &:hover{
+      color:lightgrey;
+    }
   }
 }

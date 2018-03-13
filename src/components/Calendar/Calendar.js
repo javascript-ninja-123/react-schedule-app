@@ -2,23 +2,19 @@ import React, {Component} from 'react';
 import BigCalendar from 'react-big-calendar';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter,Input } from 'reactstrap';
 import moment from 'moment';
-import {timeConverter} from '../Util/Time';
+import HTML5Backend from 'react-dnd-html5-backend'
+import { DragDropContext } from 'react-dnd'
+import {timeConverter,toTime} from '../Util/Time';
+import withDragAndDrop from 'react-big-calendar/lib/addons/dragAndDrop'
+import 'react-big-calendar/lib/addons/dragAndDrop/styles.css'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 import './Calendar.css';
+import Banner from '../Banner/Banner';
 
-
-const event =  [
-  {
-    id:'0',
-    title: 'All Day Event very long title',
-    allDay: false,
-    start: new Date(2018, 3, 13),
-    end: new Date(2018, 3, 13),
-  }
-]
 
 
 BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
+const DragAndDropCalendar = withDragAndDrop(BigCalendar)
 
  class Calendar extends Component {
 
@@ -46,7 +42,7 @@ BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
              />
          </ModalBody>
          <ModalFooter>
-           <Button color="primary" onClick={this.confirm}>Confirm</Button>
+           <Button color="primary" onClick={this.confirm}>Add</Button>
          </ModalFooter>
        </Modal>
       )
@@ -57,14 +53,24 @@ BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
   confirm = async () => {
     await this.setState({modal:!this.state.modal, renderModal:false})
     await this.setState({
-      events:[
-        {title:this.state.name,start:moment(this.state.start).toDate(),end:moment(this.state.end).toDate(),allDay:false}
-      ]})
+      events:[...this.state.events,{title:this.state.name,start:toTime(this.state.start),end:toTime(this.state.end),allDay:false}]})
+    this.setState({name:''})
   }
 
+  moveEvent = async ({ event, start, end })  => {
+      const { events } = this.state
 
-  slotSelected = (slotInfo) => {
-    const {start,end} = slotInfo;
+      const id = events.indexOf(event)
+      const updatedEvent = { ...event, start:toTime(start), end:toTime(end) }
+      const nextEvents = [...events]
+      nextEvents.splice(id, 1, updatedEvent);
+      await this.setState({
+        events: nextEvents,
+      })
+    }
+
+
+  slotSelected = ({start,end}) => {
     const newStart =  timeConverter(start)
     const newEnd =  timeConverter(end)
     this.setState({renderModal:true,modal:!this.state.modal,start:newStart,
@@ -76,12 +82,16 @@ BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
   render() {
     return (
       <div className='Calendar'>
-        <BigCalendar
+        <Banner/>
+        <DragAndDropCalendar
           events={this.state.events}
           views={['week']}
-          view='week'
+          defaultView='week'
+          onEventDrop={this.moveEvent}
           startAccessor='start'
+          onSelectEvent={event => alert(event.title)}
           endAccessor='end'
+          defaultDate={moment().toDate()}
           selectable
           step={60}
           onSelectSlot={this.slotSelected}
@@ -92,4 +102,4 @@ BigCalendar.setLocalizer(BigCalendar.momentLocalizer(moment))
   }
 }
 
-export default Calendar
+export default DragDropContext(HTML5Backend)(Calendar)

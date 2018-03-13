@@ -1,0 +1,9 @@
+@import '../Css/index.scss';
+
+.Banner{
+  @extend .page-width;
+  text-align: center;
+  color:white;
+  background:gold;
+  margin:1em 0;
+}

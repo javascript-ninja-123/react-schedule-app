@@ -1,10 +1,13 @@
-.page-margin-top, .Auth {
+.page-margin-top, .default-page, .Auth {
   margin-top: 2em; }
 
-.page-width, .Auth {
+.page-width, .default-page, .Auth {
   width: 80vw;
   margin-left: 10vw;
   margin-right: 10vw; }
 
 .Auth h4 {
   text-align: center; }
+
+.Auth .waves-effect.waves-light.btn {
+  width: 100%; }

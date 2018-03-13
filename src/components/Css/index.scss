@@ -9,3 +9,8 @@
   margin-left:10vw;
   margin-right:10vw;
 }
+
+.default-page{
+ @extend .page-margin-top;
+ @extend .page-width;
+}
