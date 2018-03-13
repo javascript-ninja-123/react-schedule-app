@@ -1,0 +1,15 @@
+.page-margin-top, .Calendar {
+  margin-top: 2em; }
+
+.page-width, .Calendar {
+  width: 80vw;
+  margin-left: 10vw;
+  margin-right: 10vw; }
+
+.Calendar {
+  height: 100vh;
+  padding-bottom: 3em; }
+
+.modal.fade.show {
+  background: transparent !important;
+  box-shadow: none !important; }

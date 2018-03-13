@@ -1,0 +1,11 @@
+@import '../Css/index.scss';
+
+
+.Auth{
+  @extend .page-width;
+  @extend .page-margin-top;
+
+  h4{
+    text-align:center;
+  }
+}

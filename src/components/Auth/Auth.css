@@ -1,0 +1,10 @@
+.page-margin-top, .Auth {
+  margin-top: 2em; }
+
+.page-width, .Auth {
+  width: 80vw;
+  margin-left: 10vw;
+  margin-right: 10vw; }
+
+.Auth h4 {
+  text-align: center; }

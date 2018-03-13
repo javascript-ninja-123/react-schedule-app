@@ -1,0 +1,12 @@
+@import '../Css/index.scss';
+
+.Calendar{
+  height:100vh;
+  @extend .page-margin-top;
+  @extend .page-width;
+  padding-bottom:3em;
+}
+.modal.fade.show{
+  background: transparent !important;
+  box-shadow:none !important;
+}
